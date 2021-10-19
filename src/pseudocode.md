@@ -15,4 +15,89 @@
 * 3 total making up the organism, each have atoms on them:
 1. input field molecule -- key down enter or add button are fine
 2. to do list item molecule -- check box, text, X button -- X button shouldn't remove from an array, but set a state of deleted true or false (soft delete/archive)
-3. bottom nav bar molecule -- items arent deleted, but moved. re-rendering view, sorting or filtering. # of items left.
+ * the to do list is an organism
+3. bottom nav bar organism -- items arent deleted, but moved. re-rendering view, sorting or filtering. # of items left.
+ * the buttons that never change are a molecule
+
+### PSEUDOCODE WITH IAN
+1. Wireframe
+2. UML diagram
+3. Methods & Design Patterns
+
+#### Wireframe
+```
+TO-DO
+___________________________
+Input
+To-dos -- checkbox and X
+Count / Buttons / Clear all
+___________________________
+```
+* React Components
+ * App -- this is true because it's a single page (ButtonBar could be on App because it's only used once and can use state of the App)
+ * Input? -- could be on App because there's only one of them
+ * TodoItem
+ * ButtonBar -- but only if menu isn't visible with an empty list
+
+* Bootstrap
+ * 4 rows, at least
+ * col-2/10 for input
+ * col-1/10/1 for listItem (could make a List Group as the organism)
+ * col-2/8/10 for buttonBar (could be a Button Group btn-group? as the organism)
+
+#### UML Design
+* See pictures of whiteboard
+
+#### Methods & Design Patterns
+##### APP
+###### Model
+* view/filterValue/filterBy
+ * all, completed, or active -- string or number? num is probably easier
+* toDoArray [{ }]
+ * id - timestamp
+ * checked - boolean
+ * deleted - boolean
+ * textValue - string
+* currentToDo -- could be in the Input component if there is one
+
+##### View
+
+
+##### Controller
+* C
+ * createNewToDo
+* R
+ * see list
+ * view count
+ * render
+* U
+ * clear
+ * filterValueChange
+ * updateCurrentValue
+ * deleteToDo (soft delete/archive)
+* D
+ * ?
+___
+* componentDidMount
+ * stringify and parse id from local storage and plug into id
+* helper method that returns toDoListItems
+```
+toDoArray.map((todo, index) => {
+    return (
+        todo
+        key = {index or todo.id}
+        data = {todo}
+    )
+})
+```
+* filterArray
+ * switch case inside of filter method to show the filterValue ("all", "completed", or "active")
+* handleClear
+ * onclick method
+* viewCount
+ * just returns the filtered length of the array
+
+#### TO DO ITEM
+##### Model
+
+
