@@ -98,11 +98,15 @@ toDoArray.map((todo, index) => {
 
 #### INPUT BAR
 ##### Model
-* currentToDo
+* currentToDo - string
 
 ##### Controller
 * createNewToDo
+ * when the user clicks the add button, it will be added to the array
+ * clear the input field
 * updateCurrentToDo
+ * IF X is clicked, soft delete
+ * IF check is clicked, move to Completed
 
 ##### View
 * col-10/2 for input

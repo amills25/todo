@@ -8,14 +8,17 @@ export default class Input extends Component {
         this.state = {
             currentToDo: ""
         };
+        this.createNewToDo = this.createNewToDo.bind(this);
     }
 
     //Controller
     componentDidMount() {
-        // console.log("Input successfully loaded!");
+        //console.log("Input successfully loaded!");
     }
-    createNewToDo() {
-        
+    createNewToDo(event) {
+        //when the user clicks the add button, it will be added to the array
+        //clear the input field
+        this.setState({ currentToDo: event.target.currentToDo });
     }
     updateCurrentToDo() {
         
@@ -34,7 +37,7 @@ export default class Input extends Component {
                                     <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                                 </svg>
                             </button>
-                            <input type="text" class="form-control" placeholder="Enter your to do list item here" aria-label="toDoListItem" aria-describedby="basic-addon1"></input>
+                            <input type="text" class="form-control" placeholder="Enter your to do list item here" aria-label="toDoListItem" aria-describedby="basic-addon1" id="input"></input>
                         </div>
                     </div>
                 </div>
