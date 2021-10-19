@@ -1,10 +1,10 @@
 //where the user input displays in list form
-import React from 'react'
+import React, { Component } from 'react'
 
-export default function ListItem() {
-    return (
-        <div>
-            
-        </div>
-    )
+export default class ListItem extends Component {
+    render() {
+        return (
+            <p>List Items Go Here</p>
+        )
+    }
 }

@@ -18,9 +18,9 @@ class Input extends Component {
     //View
     render() {
         return (
-            
+            <p>Input Bar Goes Here</p>
         );
     }
 }
 
-export default input;
+export default Input;
