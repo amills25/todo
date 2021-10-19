@@ -14,7 +14,7 @@ class App extends Component {
     render() {
         return (
             <>
-                <h1>TO-DO</h1>
+                <h1 className="text-center">TO-DO LIST</h1>
                 <Input />
                 {/* map of list items */}
                 <ListItem />

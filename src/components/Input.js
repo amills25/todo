@@ -1,12 +1,12 @@
 // where user will type in what they want to add to the list
 import React, { Component } from 'react';
 
-class Input extends Component {
+export default class Input extends Component {
     //Model
     constructor(props) {
         super(props)
         this.state = {
-            
+
         };
     }
 
@@ -18,9 +18,16 @@ class Input extends Component {
     //View
     render() {
         return (
-            <p>Input Bar Goes Here</p>
-        );
+            <div className="container">
+                <div className="row">
+                    <div className="col-2">
+                        Add Button
+                    </div>
+                    <div className="col-10">
+                        <input type="text" className="form-control" placeholder="Type your to do list item here" aria-label="toDoListItem" />
+                    </div>
+                </div>
+            </div>
+        )
     }
 }
-
-export default Input;
