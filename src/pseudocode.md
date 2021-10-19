@@ -59,9 +59,6 @@ ___________________________
  * deleted - boolean
  * textValue - string
 
-##### View
-
-
 ##### Controller
 * C
  * createNewToDo
@@ -95,35 +92,40 @@ toDoArray.map((todo, index) => {
  * onclick method
 * viewCount
  * just returns the filtered length of the array
+ 
+##### View
 
 
 #### INPUT BAR
 ##### Model
 * currentToDo -- could be in the Input component if there is one
 
+##### Controller
+
 ##### View
 * col-10/2 for input
  * typing form, then add icon
-
-##### Controller
 * updateCurrentToDo?
 
 
 #### LIST ITEM
 ##### Model
 
+##### Controller
+
 ##### View
 * col-1/10/1 for listItem (could make a List Group as the organism)
  * checkbox icon -- text value -- X icon
 
-##### Controller
-
 
 #### BUTTON BAR
+* will only display if there are items in the list
 ##### Model
+* state
+ * count - int
+
+##### Controller
 
 ##### View
 * col-2/8/10 for buttonBar (could be a Button Group btn-group? as the organism)
  * count -- all, active, completed -- clear all
-
-##### Controller
