@@ -41,7 +41,7 @@ ___________________________
 
 * Bootstrap
  * 4 rows, at least
- * col-2/10 for input
+ * col-10/2 for input
  * col-1/10/1 for listItem (could make a List Group as the organism)
  * col-2/8/10 for buttonBar (could be a Button Group btn-group? as the organism)
 
@@ -58,7 +58,6 @@ ___________________________
  * checked - boolean
  * deleted - boolean
  * textValue - string
-* currentToDo -- could be in the Input component if there is one
 
 ##### View
 
@@ -73,7 +72,7 @@ ___________________________
 * U
  * clear
  * filterValueChange
- * updateCurrentValue
+ * updateCurrentToDo?
  * deleteToDo (soft delete/archive)
 * D
  * ?
@@ -97,7 +96,34 @@ toDoArray.map((todo, index) => {
 * viewCount
  * just returns the filtered length of the array
 
-#### TO DO ITEM
+
+#### INPUT BAR
+##### Model
+* currentToDo -- could be in the Input component if there is one
+
+##### View
+* col-10/2 for input
+ * typing form, then add icon
+
+##### Controller
+* updateCurrentToDo?
+
+
+#### LIST ITEM
 ##### Model
 
+##### View
+* col-1/10/1 for listItem (could make a List Group as the organism)
+ * checkbox icon -- text value -- X icon
 
+##### Controller
+
+
+#### BUTTON BAR
+##### Model
+
+##### View
+* col-2/8/10 for buttonBar (could be a Button Group btn-group? as the organism)
+ * count -- all, active, completed -- clear all
+
+##### Controller
