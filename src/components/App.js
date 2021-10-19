@@ -7,8 +7,8 @@ class App extends Component {
     //Model
     constructor() {
         super()
-        this.filterBy = -1;
         this.state = {
+            filterBy: -1,
             toDoArray: [{  id: Date(), isChecked: false, wasDeleted: false, textValue: "" }]
         };
     }
@@ -45,10 +45,9 @@ class App extends Component {
         return (
             <>
                 <h1 className="text-center">TO-DO LIST</h1>
-                <Input />
-                {/* map of list items */}
-                <ListItem />
-                <ButtonBar />
+                <Input />                
+                <ListItem /> {/* map through array to create list of ListItems */}
+                <ButtonBar /> {/* ButtonBar will only display if there are list items present */}
             </>
         );
     }

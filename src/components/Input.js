@@ -6,9 +6,8 @@ export default class Input extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            currentToDo: ""
         };
-        this.currentToDo = "";
     }
 
     //Controller

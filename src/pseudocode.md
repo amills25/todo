@@ -35,7 +35,7 @@ ___________________________
 ```
 * React Components
  * App -- this is true because it's a single page (ButtonBar could be on App because it's only used once and can use state of the App)
- * Input? -- could be on App because there's only one of them
+ * Input 
  * TodoItem
  * ButtonBar -- but only if menu isn't visible with an empty list
 
@@ -101,11 +101,11 @@ toDoArray.map((todo, index) => {
 * currentToDo -- could be in the Input component if there is one
 
 ##### Controller
+* updateCurrentToDo
 
 ##### View
 * col-10/2 for input
  * typing form, then add icon
-* updateCurrentToDo?
 
 
 #### LIST ITEM
