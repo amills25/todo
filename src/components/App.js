@@ -44,10 +44,17 @@ class App extends Component {
     render() {
         return (
             <>
+                <img src="./img/AMBlackXLTrans.jpg" className="mx-auto d-block" alt="Andrew Mills Logo" width="200" height="200"/>
                 <h1 className="text-center">TO-DO LIST</h1>
                 <Input />                
                 <ListItem /> {/* map through array to create list of ListItems */}
                 <ButtonBar /> {/* ButtonBar will only display if there are list items present */}
+                <div className="row-1 fixed-bottom">
+                    <div className="col text-center">
+                        <img src="./img/AMBlackXLTrans.jpg" alt="Andrew Mills Logo" width="30" height="24" />
+                                Developed by Andrew Mills, 2021.
+                    </div>
+                </div>
             </>
         );
     }

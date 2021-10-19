@@ -14,6 +14,9 @@ export default class Input extends Component {
     componentDidMount() {
         // console.log("Input successfully loaded!");
     }
+    createNewToDo() {
+        
+    }
     updateCurrentToDo() {
         
     }

@@ -51,8 +51,8 @@ ___________________________
 #### Methods & Design Patterns
 ##### APP
 ###### Model
-* view/filterValue/filterBy
- * all, completed, or active -- string or number? num is probably easier
+* filterBy
+ * all, completed, or active -- num is probably easier (-1, 0, 1)
 * toDoArray [{ }]
  * id - timestamp
  * checked - boolean
@@ -98,9 +98,10 @@ toDoArray.map((todo, index) => {
 
 #### INPUT BAR
 ##### Model
-* currentToDo -- could be in the Input component if there is one
+* currentToDo
 
 ##### Controller
+* createNewToDo
 * updateCurrentToDo
 
 ##### View
@@ -121,8 +122,6 @@ toDoArray.map((todo, index) => {
 #### BUTTON BAR
 * will only display if there are items in the list
 ##### Model
-* state
- * count - int
 
 ##### Controller
 
