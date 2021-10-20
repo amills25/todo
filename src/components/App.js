@@ -24,9 +24,9 @@ class App extends Component {
         //when the user types in the form, it will create a value
         //every time a new to do, we're creating a new toDoArray that is the exact same as it was, but with the newToDo added to it
         const newToDo = {
-            id: Date(),
+            id: Date.now(),
             isChecked: false,
-            wasDeleted: null,
+            wasDeleted: false,
             textValue: textValue,
         };
         this.setState({
@@ -34,23 +34,38 @@ class App extends Component {
             toDoArray: [newToDo, ...this.state.toDoArray],
         });
     };
-    toDoListMap() {
-        return this.state.toDoArray.map((todo) => {
-            return <ListItem todo={todo} />;
-        });
-    }
-    handleItemComplete = () => {
-        // if check is clicked, change wasDeleted to true
+    toDoListMap = () =>
+        this.state.toDoArray.map((todo) => (
+            <ListItem
+                todo={todo}
+                key={todo.id}
+                handleItemComplete={this.handleItemComplete}
+            />
+        ));
+    handleItemComplete = (id) => {
+        // if check is clicked, change isChecked to true
         // check for an id
         // feed the to do item
-        {
-            // this.state.toDoArray.id;
-        }
-        this.setState((this.toDoArray.isChecked = true));
+        console.log(id);
+        this.setState({
+            toDoArray: this.state.toDoArray.map((todo) => {
+                if (todo.id === id) {
+                    todo.isChecked = !todo.isChecked;
+                }
+                return todo;
+            }),
+        });
     };
-    handleItemX = () => {
+    handleItemX = (id) => {
         // if x is clicked, will soft delete an item from the list
-        this.setState((this.toDoArray.wasDeleted = true));
+        this.setState({
+            toDoArray: this.state.toDoArray.map((todo) => {
+                if (todo.id === id) {
+                    todo.wasDeleted = !todo.wasDeleted;
+                }
+                return todo;
+            }),
+        });
     };
     filterArray(filter) {
         // switch case inside of filter method to show the filterValue ("active", "completed", or "all")
@@ -67,7 +82,7 @@ class App extends Component {
         }
     }
     handleListClear() {
-        // onclick method
+        // onClick method
     }
     viewCount() {
         // just returns the filtered length of the array

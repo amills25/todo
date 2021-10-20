@@ -115,12 +115,12 @@ toDoArray.map((todo, index) => {
     -   onlick method
     -   if check is clicked, change wasDeleted to true
 -   handleItemX
-    -   onclick method
+    -   onClick method
     -   will soft delete an item from the list
 -   filterArray
     -   switch case inside of filter method to show the filterValue ("active", "completed", or "all")
 -   handleListClear
-    -   onclick method
+    -   onClick method
     -   empty the array (make wasDeleted: true)
 -   viewCount
     -   just returns the filtered length of the array

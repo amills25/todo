@@ -18,11 +18,11 @@ export default class Input extends Component {
     };
     onCreateSubmit = (event) => {
         //gets value from user input and calls parent method
+        event.preventDefault();
         if (this.state.currentToDo) {
             this.props.createNewToDo(this.state.currentToDo);
         }
         this.setState({ currentToDo: "" });
-        event.preventDefault();
     };
 
     //View

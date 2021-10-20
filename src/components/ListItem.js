@@ -15,10 +15,10 @@ export default function ListItem(props) {
                         <li className="list-group-item d-flex justify-content-between align-items-center">
                             <button
                                 type="button"
-                                onClick={props.handleItemComplete}
+                                onClick={() =>
+                                    props.handleItemComplete(props.todo.id)
+                                }
                                 className="btn"
-                                //the id of the listitem
-                                id={props}
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,7 @@ export default function ListItem(props) {
                             {props.todo.textValue}
                             <button
                                 type="button"
-                                onclick={props.handleItemX}
+                                onClick={() => props.handleItemX(props.todo.id)}
                                 className="btn"
                             >
                                 <svg
