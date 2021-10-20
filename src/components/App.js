@@ -40,6 +40,7 @@ class App extends Component {
                 todo={todo}
                 key={todo.id}
                 handleItemComplete={this.handleItemComplete}
+                handleItemX={this.handleItemX}
             />
         ));
     handleItemComplete = (id) => {
@@ -57,7 +58,7 @@ class App extends Component {
         });
     };
     handleItemX = (id) => {
-        // if x is clicked, will soft delete an item from the list
+        // if x is clicked, will change wasDeleted to true
         this.setState({
             toDoArray: this.state.toDoArray.map((todo) => {
                 if (todo.id === id) {
@@ -67,19 +68,30 @@ class App extends Component {
             }),
         });
     };
-    filterArray(filter) {
-        // switch case inside of filter method to show the filterValue ("active", "completed", or "all")
-        switch (filter) {
-            case "active":
-                //only show to dos that are "active"
-                break;
-            case "completed":
-                //only show to dos that are "completed"
-                break;
-            default:
-                //show to dos that are "actve" and "completed"
-                break;
-        }
+    filterArray() {
+        // switch case inside of filter method to show the filterBy ("active", "completed", or "all")
+        this.state.toDoArray.filter((status) => {
+            switch (status) {
+                case "active":
+                    //only show to dos that are "active"
+                    this.setState({
+                        filterValue: "active",
+                    });
+                    break;
+                case "completed":
+                    //only show to dos that are "completed"
+                    this.setState({
+                        filterValue: "completed",
+                    });
+                    break;
+                default:
+                    //show to dos that are "actve" and "completed"
+                    this.setState({
+                        filterValue: "all",
+                    });
+                    break;
+            }
+        });
     }
     handleListClear() {
         // onClick method
