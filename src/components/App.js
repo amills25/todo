@@ -70,8 +70,8 @@ class App extends Component {
     };
     filterArray() {
         // switch case inside of filter method to show the filterBy ("active", "completed", or "all")
-        this.state.toDoArray.filter((status) => {
-            switch (status) {
+        this.state.toDoArray.filter((wasDeleted) => {
+            switch (wasDeleted) {
                 case "active":
                     //show to dos that are "actve" and "completed"
                     this.setState({
@@ -95,6 +95,8 @@ class App extends Component {
     }
     handleListClear() {
         // onClick method
+        // emtpy the list
+        // have the button text change to "restore" for a toggle
     }
     viewCount() {
         // just returns the filtered length of the array
