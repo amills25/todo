@@ -26,7 +26,7 @@ class App extends Component {
         const newToDo = {
             id: Date(),
             isChecked: false,
-            wasDeleted: false,
+            wasDeleted: null,
             textValue: textValue,
         };
         this.setState({
@@ -39,12 +39,19 @@ class App extends Component {
             return <ListItem todo={todo} />;
         });
     }
-    handleItemComplete() {
-        // will change filterBy value from active to completed
-    }
-    handleItemX() {
-        // will soft delete an item from the list
-    }
+    handleItemComplete = () => {
+        // if check is clicked, change wasDeleted to true
+        // check for an id
+        // feed the to do item
+        {
+            // this.state.toDoArray.id;
+        }
+        this.setState((this.toDoArray.isChecked = true));
+    };
+    handleItemX = () => {
+        // if x is clicked, will soft delete an item from the list
+        this.setState((this.toDoArray.wasDeleted = true));
+    };
     filterArray(filter) {
         // switch case inside of filter method to show the filterValue ("active", "completed", or "all")
         switch (filter) {

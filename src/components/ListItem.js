@@ -13,7 +13,13 @@ export default function ListItem(props) {
                 <div className="col">
                     <ul className="list-group">
                         <li className="list-group-item d-flex justify-content-between align-items-center">
-                            <button type="button" className="btn">
+                            <button
+                                type="button"
+                                onClick={props.handleItemComplete}
+                                className="btn"
+                                //the id of the listitem
+                                id={props}
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
@@ -27,7 +33,11 @@ export default function ListItem(props) {
                                 </svg>
                             </button>
                             {props.todo.textValue}
-                            <button type="button" className="btn">
+                            <button
+                                type="button"
+                                onclick={props.handleItemX}
+                                className="btn"
+                            >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
