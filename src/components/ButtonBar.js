@@ -25,6 +25,13 @@ export default function ButtonBar(props) {
                             onClick={props.filterArray}
                             className="btn btn-outline-dark"
                         >
+                            All
+                        </button>
+                        <button
+                            type="button"
+                            onClick={props.filterArray}
+                            className="btn btn-outline-dark"
+                        >
                             Active
                         </button>
                         <button
@@ -33,13 +40,6 @@ export default function ButtonBar(props) {
                             className="btn btn-outline-dark"
                         >
                             Completed
-                        </button>
-                        <button
-                            type="button"
-                            onClick={props.filterArray}
-                            className="btn btn-outline-dark"
-                        >
-                            All
                         </button>
                     </div>
                 </div>
