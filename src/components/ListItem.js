@@ -33,7 +33,12 @@ export default function ListItem(props) {
                                 </svg>
                             </button>
 
-                            {props.todo.textValue}
+                            {props.todo.isChecked === true ? (
+                                <strike>{props.todo.textValue}</strike>
+                            ) : (
+                                props.todo.textValue
+                            )}
+
                             {/* {props.handleItemComplete(props.todo.id) ? (
                                 <strike>{props.todo.isChecked}</strike>
                             ) : (

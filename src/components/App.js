@@ -8,7 +8,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            filterValue: "active",
+            filterValue: "",
             toDoArray: [],
         };
     }
@@ -73,21 +73,21 @@ class App extends Component {
         this.state.toDoArray.filter((status) => {
             switch (status) {
                 case "active":
+                    //show to dos that are "actve" and "completed"
+                    this.setState({
+                        filterValue: "all",
+                    });
+                    break;
+                case "completed":
                     //only show to dos that are "active"
                     this.setState({
                         filterValue: "active",
                     });
                     break;
-                case "completed":
-                    //only show to dos that are "completed"
+                default:
+                    //show to dos that are "completed"
                     this.setState({
                         filterValue: "completed",
-                    });
-                    break;
-                default:
-                    //show to dos that are "actve" and "completed"
-                    this.setState({
-                        filterValue: "all",
                     });
                     break;
             }
