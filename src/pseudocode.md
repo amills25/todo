@@ -122,6 +122,12 @@ toDoArray.map((todo, index) => {
 -   handleListClear
     -   onClick method
     -   empty the array (make wasDeleted: true)
+-   handleCompleteAll
+    -   onclick method
+    -   turns everything that has not been "completed" to "completed"
+-   handleRestoreAll
+    -   onclick method
+    -   turns everything that has been "completed" back to "active"
 -   viewCount
     -   just returns the filtered length of the array
 

@@ -14,11 +14,20 @@ class App extends Component {
     }
 
     //Controller
-    componentDidMount() {
+    componentDidMount(key) {
         // stringify and parse id from local storage and plug into id
+        // json stringify
+        const value = localStorage.getItem(key);
+        let parsedValue = JSON.parse(value);
     }
-    componentDidUpdate() {
+    componentDidUpdate(key, item) {
         // when state updates, store changes in localStorage
+        // json parse
+        let stringifiedValue = JSON.stringify(item);
+        localStorage.setItem(key, stringifiedValue);
+    }
+    saveToLocalStorage() {
+        //
     }
     createNewToDo = (textValue) => {
         //when the user types in the form, it will create a value
@@ -35,14 +44,16 @@ class App extends Component {
         });
     };
     toDoListMap = () =>
-        this.state.toDoArray.map((todo) => (
-            <ListItem
-                todo={todo}
-                key={todo.id}
-                handleItemComplete={this.handleItemComplete}
-                handleItemX={this.handleItemX}
-            />
-        ));
+        this.state.toDoArray
+            .filter((todo) => !todo.wasDeleted) //only show if it was not deleted
+            .map((todo) => (
+                <ListItem
+                    todo={todo}
+                    key={todo.id}
+                    handleItemComplete={this.handleItemComplete}
+                    handleItemX={this.handleItemX}
+                />
+            ));
     handleItemComplete = (id) => {
         // if check is clicked, change isChecked to true
         // check for an id
@@ -93,10 +104,19 @@ class App extends Component {
             }
         });
     }
-    handleListClear() {
+    handleClearAll() {
         // onClick method
         // emtpy the list
         // have the button text change to "restore" for a toggle
+        // localStorage.clear();
+    }
+    handleCompleteAll() {
+        //onclick method
+        //turns everything that has not been "completed" to "completed"
+    }
+    handleRestoreAll() {
+        //onclick method
+        //turns everything that has been "completed" back to "active"
     }
     viewCount() {
         // just returns the filtered length of the array
@@ -104,6 +124,7 @@ class App extends Component {
 
     //View
     render() {
+        let listUsed = this.toDoListMap();
         return (
             <>
                 <img
@@ -117,11 +138,14 @@ class App extends Component {
 
                 <Input createNewToDo={this.createNewToDo} />
 
-                {this.toDoListMap()}
+                {listUsed}
 
                 {/* ButtonBar will only display if there are list items present */}
                 {this.state.toDoArray.length > 0 ? (
-                    <ButtonBar toDoArray={this.state.toDoArray} />
+                    <ButtonBar
+                        toDoArray={this.state.toDoArray}
+                        count={listUsed.length}
+                    />
                 ) : null}
 
                 <div className="row-1 fixed-bottom">

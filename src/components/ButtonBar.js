@@ -12,7 +12,7 @@ export default function ButtonBar(props) {
             <div className="row align-items-start">
                 <div className="col-2">
                     {/* pull the length of the array from the parent */}
-                    {props.toDoArray.length} items left
+                    {props.count} items left
                 </div>
                 <div className="col-8 text-center">
                     <div
