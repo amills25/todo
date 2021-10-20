@@ -44,16 +44,17 @@ ___________________________
 ```
 
 -   React Components
--   App -- this is true because it's a single page (ButtonBar could be on App because it's only used once and can use state of the App)
--   Input
--   TodoItem
--   ButtonBar -- but only if menu isn't visible with an empty list
+
+    -   App -- this is true because it's a single page (ButtonBar could be on App because it's only used once and can use state of the App)
+    -   Input
+    -   TodoItem
+    -   ButtonBar -- but only if menu isn't visible with an empty list
 
 -   Bootstrap
--   4 rows, at least
--   col-10/2 for input
--   col-1/10/1 for listItem (could make a List Group as the organism)
--   col-2/8/10 for buttonBar (could be a Button Group btn-group? as the organism)
+    -   4 rows, at least
+    -   col-10/2 for input
+    -   col-1/10/1 for listItem (could make a List Group as the organism)
+    -   col-2/8/10 for buttonBar (could be a Button Group btn-group? as the organism)
 
 #### UML Design
 
@@ -66,7 +67,7 @@ ___________________________
 ###### Model
 
 -   filterBy
-    -   all, completed, or active -- num is probably easier (-1, 0, 1)
+    -   all, completed, or active -- num is probably easier (active, completed, all)
 -   toDoArray [{ }]
     -   id - timestamp
     -   checked - boolean
@@ -93,7 +94,12 @@ ___________________________
 
 -   componentDidMount
     -   stringify and parse id from local storage and plug into id
--   helper method that returns toDoListItems
+-   componentDidUpdate
+    -   when state updates, store changes in localStorage
+-   createNewToDo
+    -   when the user types in the form, it will create a value
+    -   every time a new to do, we're creating a new toDoArray that is the exact same as it was, but with the newToDo added to it
+-   toDoListMap
 
 ```
 toDoArray.map((todo, index) => {
@@ -105,10 +111,14 @@ toDoArray.map((todo, index) => {
 })
 ```
 
+-   handleItemComplete
+    -   will change filterBy value from active to completed
+-   handleItemX
+    -   will soft delete an item from the list
 -   filterArray
-    -   switch case inside of filter method to show the filterValue ("all", "completed", or "active")
--   handleClear
--   onclick method
+    -   switch case inside of filter method to show the filterValue ("active", "completed", or "all")
+-   handleListClear
+    -   onclick method
 -   viewCount
     -   just returns the filtered length of the array
 
@@ -122,12 +132,11 @@ toDoArray.map((todo, index) => {
 
 ##### Controller
 
--   createNewToDo
+-   updateInputValue
     -   when the user clicks the add button, it will be added to the array
     -   clear the input field
--   updateCurrentToDo
-    -   IF X is clicked, soft delete
-    -   IF check is clicked, move to Completed
+-   onCreateSubmit
+    -   gets value from user input and calls parent method
 
 ##### View
 

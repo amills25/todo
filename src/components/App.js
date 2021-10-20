@@ -8,7 +8,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            filterBy: -1,
+            filterValue: "active",
             toDoArray: [],
         };
     }
@@ -39,10 +39,27 @@ class App extends Component {
             return <ListItem todo={todo} />;
         });
     }
-    filterArray() {
-        // switch case inside of filter method to show the filterValue ("all", "completed", or "active")
+    handleItemComplete() {
+        // will change filterBy value from active to completed
     }
-    handleClear() {
+    handleItemX() {
+        // will soft delete an item from the list
+    }
+    filterArray(filter) {
+        // switch case inside of filter method to show the filterValue ("active", "completed", or "all")
+        switch (filter) {
+            case "active":
+                //only show to dos that are "active"
+                break;
+            case "completed":
+                //only show to dos that are "completed"
+                break;
+            default:
+                //show to dos that are "actve" and "completed"
+                break;
+        }
+    }
+    handleListClear() {
         // onclick method
     }
     viewCount() {
@@ -61,12 +78,16 @@ class App extends Component {
                     height="200"
                 />
                 <h1 className="text-center">TO-DO LIST</h1>
+
                 <Input createNewToDo={this.createNewToDo} />
+
                 {this.toDoListMap()}
+
                 {/* ButtonBar will only display if there are list items present */}
                 {this.state.toDoArray.length > 0 ? (
                     <ButtonBar toDoArray={this.state.toDoArray} />
                 ) : null}
+
                 <div className="row-1 fixed-bottom">
                     <div className="col text-center">
                         <img
