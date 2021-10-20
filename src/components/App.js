@@ -58,7 +58,6 @@ class App extends Component {
         // if check is clicked, change isChecked to true
         // check for an id
         // feed the to do item
-        console.log(id);
         this.setState({
             toDoArray: this.state.toDoArray.map((todo) => {
                 if (todo.id === id) {
@@ -80,27 +79,25 @@ class App extends Component {
         });
     };
     filterArray() {
+        // filter through the array
         // switch case inside of filter method to show the filterBy ("active", "completed", or "all")
-        this.state.toDoArray.filter((wasDeleted) => {
-            switch (wasDeleted) {
-                case "active":
+        this.state.toDoArray.filter((todo) => {
+            switch (todo.isChecked) {
+                case true:
                     //show to dos that are "actve" and "completed"
-                    this.setState({
-                        filterValue: "all",
-                    });
-                    break;
-                case "completed":
-                    //only show to dos that are "active"
-                    this.setState({
-                        filterValue: "active",
-                    });
-                    break;
-                default:
-                    //show to dos that are "completed"
-                    this.setState({
+                    return this.setState({
                         filterValue: "completed",
                     });
-                    break;
+                case false:
+                    //only show to dos that are "active"
+                    return this.setState({
+                        filterValue: "active",
+                    });
+                default:
+                    //show to dos that are "completed"
+                    return this.setState({
+                        filterValue: "all",
+                    });
             }
         });
     }
