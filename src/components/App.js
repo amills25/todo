@@ -45,7 +45,7 @@ class App extends Component {
     };
     toDoListMap = () =>
         this.state.toDoArray
-            .filter((todo) => !todo.wasDeleted) //only show if it was not deleted
+            .filter((todo) => !todo.wasDeleted && !todo.isChecked) //only show if it was not deleted
             .map((todo) => (
                 <ListItem
                     todo={todo}
@@ -78,9 +78,33 @@ class App extends Component {
             }),
         });
     };
+    handleClearAll = () => {
+        // onClick method
+        // emtpy the list
+        // have the button text change to "restore" for a toggle
+        let clonedArray = this.state.toDoArray.map((a) => {
+            return { ...a, wasDeleted: true };
+        });
+        this.setState({
+            toDoArray: clonedArray,
+        });
+        // localStorage.clear();
+    };
+    handleCompleteAll = () => {
+        //onclick method
+        //makes every item that hasn't been checked set to checked
+        let clonedArray = this.state.toDoArray.map((a) => {
+            return { ...a, isChecked: true };
+        });
+        this.setState({
+            toDoArray: clonedArray,
+        });
+    };
     filterArray() {
         // filter through the array
         // switch case inside of filter method to show the filterBy ("active", "completed", or "all")
+        // let listUsed = this.toDoListMap();
+
         this.state.toDoArray.filter((todo) => {
             switch (todo.isChecked) {
                 case true:
@@ -101,16 +125,6 @@ class App extends Component {
             }
         });
     }
-    handleClearAll() {
-        // onClick method
-        // emtpy the list
-        // have the button text change to "restore" for a toggle
-        // localStorage.clear();
-    }
-    handleCompleteAll() {
-        //onclick method
-        //turns everything that has not been "completed" to "completed"
-    }
     handleRestoreAll() {
         //onclick method
         //turns everything that has been "completed" back to "active"
@@ -122,6 +136,8 @@ class App extends Component {
     //View
     render() {
         let listUsed = this.toDoListMap();
+        let checked = this.handleCompleteAll;
+        let cleared = this.handleClearAll;
         return (
             <>
                 <img
@@ -142,6 +158,8 @@ class App extends Component {
                     <ButtonBar
                         toDoArray={this.state.toDoArray}
                         count={listUsed.length}
+                        checked={checked}
+                        cleared={cleared}
                     />
                 ) : null}
 

@@ -14,7 +14,8 @@ export default function ButtonBar(props) {
                     {/* pull the length of the array from the parent */}
                     {props.count} items left
                 </div>
-                <div className="col-8 text-center">
+                <div className="col-2"></div>
+                <div className="col-4 text-center">
                     <div
                         className="btn-group"
                         role="group"
@@ -44,7 +45,20 @@ export default function ButtonBar(props) {
                     </div>
                 </div>
                 <div className="col-2 text-end">
-                    <button type="button" className="btn">
+                    <button
+                        type="button"
+                        onClick={props.checked}
+                        className="btn"
+                    >
+                        Complete All
+                    </button>
+                </div>
+                <div className="col-2 text-end">
+                    <button
+                        type="button"
+                        onClick={props.cleared}
+                        className="btn"
+                    >
                         Clear All
                     </button>
                 </div>
