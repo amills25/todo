@@ -45,7 +45,7 @@ class App extends Component {
     };
     toDoListMap = () =>
         this.state.toDoArray
-            .filter((todo) => !todo.wasDeleted && !todo.isChecked) //only show if it was not deleted
+            .filter((todo) => !todo.wasDeleted && !todo.isChecked) //only show if it was not deleted (ACTIVE display)
             .map((todo) => (
                 <ListItem
                     todo={todo}
@@ -100,6 +100,16 @@ class App extends Component {
             toDoArray: clonedArray,
         });
     };
+    handleRestoreAll = () => {
+        //onclick method
+        //turns everything that has been "completed" back to "active"
+        let clonedArray = this.state.toDoArray.map((a) => {
+            return { ...a, isChecked: false };
+        });
+        this.setState({
+            toDoArray: clonedArray,
+        });
+    };
     filterArray() {
         // filter through the array
         // switch case inside of filter method to show the filterBy ("active", "completed", or "all")
@@ -110,24 +120,20 @@ class App extends Component {
                 case true:
                     //show to dos that are "actve" and "completed"
                     return this.setState({
-                        filterValue: "completed",
+                        filterValue: "all",
                     });
                 case false:
-                    //only show to dos that are "active"
+                    //only show to dos that are "completed"
+                    return this.setState({
+                        filterValue: "completed",
+                    });
+                default:
+                    //show to dos that are "active"
                     return this.setState({
                         filterValue: "active",
                     });
-                default:
-                    //show to dos that are "completed"
-                    return this.setState({
-                        filterValue: "all",
-                    });
             }
         });
-    }
-    handleRestoreAll() {
-        //onclick method
-        //turns everything that has been "completed" back to "active"
     }
     viewCount() {
         // just returns the filtered length of the array
@@ -138,6 +144,7 @@ class App extends Component {
         let listUsed = this.toDoListMap();
         let checked = this.handleCompleteAll;
         let cleared = this.handleClearAll;
+        let restored = this.handleRestoreAll;
         return (
             <>
                 <img
@@ -160,6 +167,7 @@ class App extends Component {
                         count={listUsed.length}
                         checked={checked}
                         cleared={cleared}
+                        restored={restored}
                     />
                 ) : null}
 

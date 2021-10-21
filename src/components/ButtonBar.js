@@ -14,20 +14,12 @@ export default function ButtonBar(props) {
                     {/* pull the length of the array from the parent */}
                     {props.count} items left
                 </div>
-                <div className="col-2"></div>
                 <div className="col-4 text-center">
                     <div
                         className="btn-group"
                         role="group"
                         aria-label="Basic outlined example"
                     >
-                        <button
-                            type="button"
-                            onClick={props.filterArray}
-                            className="btn btn-outline-dark"
-                        >
-                            All
-                        </button>
                         <button
                             type="button"
                             onClick={props.filterArray}
@@ -42,6 +34,13 @@ export default function ButtonBar(props) {
                         >
                             Completed
                         </button>
+                        <button
+                            type="button"
+                            onClick={props.filterArray}
+                            className="btn btn-outline-dark"
+                        >
+                            All
+                        </button>
                     </div>
                 </div>
                 <div className="col-2 text-end">
@@ -51,6 +50,15 @@ export default function ButtonBar(props) {
                         className="btn"
                     >
                         Complete All
+                    </button>
+                </div>
+                <div className="col-2 text-end">
+                    <button
+                        type="button"
+                        onClick={props.restored}
+                        className="btn"
+                    >
+                        Restore Completed
                     </button>
                 </div>
                 <div className="col-2 text-end">
