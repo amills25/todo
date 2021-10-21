@@ -22,24 +22,27 @@ export default function ButtonBar(props) {
                     >
                         <button
                             type="button"
-                            onClick={props.filterArray}
+                            id="all"
+                            onClick={props.filtered}
+                            className="btn btn-outline-dark"
+                        >
+                            All
+                        </button>
+                        <button
+                            type="button"
+                            id="active"
+                            onClick={props.filtered}
                             className="btn btn-outline-dark"
                         >
                             Active
                         </button>
                         <button
                             type="button"
-                            onClick={props.filterArray}
+                            id="completed"
+                            onClick={props.filtered}
                             className="btn btn-outline-dark"
                         >
                             Completed
-                        </button>
-                        <button
-                            type="button"
-                            onClick={props.filterArray}
-                            className="btn btn-outline-dark"
-                        >
-                            All
                         </button>
                     </div>
                 </div>

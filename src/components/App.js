@@ -8,7 +8,7 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            filterValue: "",
+            filterValue: "all",
             toDoArray: [],
         };
     }
@@ -40,20 +40,40 @@ class App extends Component {
         };
         this.setState({
             ...this.state,
+            filterValue: "all",
             toDoArray: [newToDo, ...this.state.toDoArray],
         });
     };
-    toDoListMap = () =>
-        this.state.toDoArray
-            .filter((todo) => !todo.wasDeleted && !todo.isChecked) //only show if it was not deleted (ACTIVE display)
-            .map((todo) => (
-                <ListItem
-                    todo={todo}
-                    key={todo.id}
-                    handleItemComplete={this.handleItemComplete}
-                    handleItemX={this.handleItemX}
-                />
-            ));
+    toDoListMap = () => {
+        let tempList = [];
+        tempList = this.state.toDoArray.filter((todo) => {
+            if (this.state.filterValue === "active") {
+                //show to dos that are "actve" and "completed"
+                if (!todo.isChecked) {
+                    return todo;
+                }
+            } else if (this.state.filterValue === "completed") {
+                //only show to dos that are "completed"
+                if (todo.isChecked && !todo.wasDeleted) {
+                    return todo;
+                }
+            } else {
+                return todo;
+            }
+        });
+        return tempList;
+    };
+
+    // this.state.toDoArray
+    //     .filter((todo) => !todo.wasDeleted && !todo.isChecked) //only show if it was not deleted (ACTIVE display)
+    //     .map((todo) => (
+    // <ListItem
+    //     todo={todo}
+    //     key={todo.id}
+    //     handleItemComplete={this.handleItemComplete}
+    //     handleItemX={this.handleItemX}
+    // />
+    //     ));
     handleItemComplete = (id) => {
         // if check is clicked, change isChecked to true
         // check for an id
@@ -110,34 +130,11 @@ class App extends Component {
             toDoArray: clonedArray,
         });
     };
-    filterArray() {
+    filterArray = (e) => {
         // filter through the array
         // switch case inside of filter method to show the filterBy ("active", "completed", or "all")
-        // let listUsed = this.toDoListMap();
-
-        this.state.toDoArray.filter((todo) => {
-            switch (todo.isChecked) {
-                case true:
-                    //show to dos that are "actve" and "completed"
-                    return this.setState({
-                        filterValue: "all",
-                    });
-                case false:
-                    //only show to dos that are "completed"
-                    return this.setState({
-                        filterValue: "completed",
-                    });
-                default:
-                    //show to dos that are "active"
-                    return this.setState({
-                        filterValue: "active",
-                    });
-            }
-        });
-    }
-    viewCount() {
-        // just returns the filtered length of the array
-    }
+        this.setState({ filterValue: e.target.id });
+    };
 
     //View
     render() {
@@ -145,6 +142,7 @@ class App extends Component {
         let checked = this.handleCompleteAll;
         let cleared = this.handleClearAll;
         let restored = this.handleRestoreAll;
+        let filtered = this.filterArray;
         return (
             <>
                 <img
@@ -158,7 +156,14 @@ class App extends Component {
 
                 <Input createNewToDo={this.createNewToDo} />
 
-                {listUsed}
+                {listUsed.map((todo) => (
+                    <ListItem
+                        todo={todo}
+                        key={todo.id}
+                        handleItemComplete={this.handleItemComplete}
+                        handleItemX={this.handleItemX}
+                    />
+                ))}
 
                 {/* ButtonBar will only display if there are list items present */}
                 {this.state.toDoArray.length > 0 ? (
@@ -168,6 +173,7 @@ class App extends Component {
                         checked={checked}
                         cleared={cleared}
                         restored={restored}
+                        filtered={filtered}
                     />
                 ) : null}
 
