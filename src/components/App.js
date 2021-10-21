@@ -9,26 +9,13 @@ class App extends Component {
         super();
         this.state = {
             filterValue: "all",
-            toDoArray: [],
+            toDoArray: JSON.parse(localStorage.getItem("todos")) || [],
         };
+        console.log(localStorage);
+        // localStorage.
     }
 
     //Controller
-    componentDidMount(key) {
-        // stringify and parse id from local storage and plug into id
-        // json stringify
-        const value = localStorage.getItem(key);
-        let parsedValue = JSON.parse(value);
-    }
-    componentDidUpdate(key, item) {
-        // when state updates, store changes in localStorage
-        // json parse
-        let stringifiedValue = JSON.stringify(item);
-        localStorage.setItem(key, stringifiedValue);
-    }
-    saveToLocalStorage() {
-        //
-    }
     createNewToDo = (textValue) => {
         //when the user types in the form, it will create a value
         //every time a new to do, we're creating a new toDoArray that is the exact same as it was, but with the newToDo added to it
@@ -43,37 +30,32 @@ class App extends Component {
             filterValue: "all",
             toDoArray: [newToDo, ...this.state.toDoArray],
         });
+        localStorage.setItem(
+            "todos",
+            JSON.stringify([newToDo, ...this.state.toDoArray])
+        );
     };
     toDoListMap = () => {
         let tempList = [];
         tempList = this.state.toDoArray.filter((todo) => {
-            if (this.state.filterValue === "active") {
-                //show to dos that are "actve" and "completed"
-                if (!todo.isChecked) {
+            if (!todo.wasDeleted) {
+                if (this.state.filterValue === "active") {
+                    //show to dos that are "actve" and "completed"
+                    if (!todo.isChecked) {
+                        return todo;
+                    }
+                } else if (this.state.filterValue === "completed") {
+                    //only show to dos that are "completed"
+                    if (todo.isChecked && !todo.wasDeleted) {
+                        return todo;
+                    }
+                } else {
                     return todo;
                 }
-            } else if (this.state.filterValue === "completed") {
-                //only show to dos that are "completed"
-                if (todo.isChecked && !todo.wasDeleted) {
-                    return todo;
-                }
-            } else {
-                return todo;
             }
         });
         return tempList;
     };
-
-    // this.state.toDoArray
-    //     .filter((todo) => !todo.wasDeleted && !todo.isChecked) //only show if it was not deleted (ACTIVE display)
-    //     .map((todo) => (
-    // <ListItem
-    //     todo={todo}
-    //     key={todo.id}
-    //     handleItemComplete={this.handleItemComplete}
-    //     handleItemX={this.handleItemX}
-    // />
-    //     ));
     handleItemComplete = (id) => {
         // if check is clicked, change isChecked to true
         // check for an id
@@ -86,6 +68,10 @@ class App extends Component {
                 return todo;
             }),
         });
+        localStorage.setItem(
+            "todos",
+            JSON.stringify([...this.state.toDoArray])
+        );
     };
     handleItemX = (id) => {
         // if x is clicked, will change wasDeleted to true
@@ -97,6 +83,10 @@ class App extends Component {
                 return todo;
             }),
         });
+        localStorage.setItem(
+            "todos",
+            JSON.stringify([...this.state.toDoArray])
+        );
     };
     handleClearAll = () => {
         // onClick method
@@ -108,7 +98,7 @@ class App extends Component {
         this.setState({
             toDoArray: clonedArray,
         });
-        // localStorage.clear();
+        localStorage.setItem("todos", JSON.stringify([...clonedArray]));
     };
     handleCompleteAll = () => {
         //onclick method
@@ -119,6 +109,7 @@ class App extends Component {
         this.setState({
             toDoArray: clonedArray,
         });
+        localStorage.setItem("todos", JSON.stringify([...clonedArray]));
     };
     handleRestoreAll = () => {
         //onclick method
@@ -129,6 +120,7 @@ class App extends Component {
         this.setState({
             toDoArray: clonedArray,
         });
+        localStorage.setItem("todos", JSON.stringify([...clonedArray]));
     };
     filterArray = (e) => {
         // filter through the array
