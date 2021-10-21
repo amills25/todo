@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import App from "./components/App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
+import "./styles/index.scss";
 
-import "bootstrap/dist/css/bootstrap.css";
+// import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 // import 'bootstrap-icons/icons/';
-// import './styles/index.scss'
 
 ReactDOM.render(
     <React.StrictMode>

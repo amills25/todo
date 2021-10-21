@@ -8,9 +8,9 @@ export default function ButtonBar(props) {
 
     //View
     return (
-        <div className="container">
-            <div className="row align-items-start">
-                <div className="col-2 text-center">
+        <div className="container barShift">
+            <div className="row">
+                <div className="col-2 text-center fw-bold align-self-center">
                     {/* pull the length of the array from the parent */}
                     {props.count} items left
                 </div>
@@ -24,7 +24,7 @@ export default function ButtonBar(props) {
                             type="button"
                             id="all"
                             onClick={props.filtered}
-                            className="btn btn-outline-dark"
+                            className="btn btn-outline-dark fw-bold"
                         >
                             All
                         </button>
@@ -32,7 +32,7 @@ export default function ButtonBar(props) {
                             type="button"
                             id="active"
                             onClick={props.filtered}
-                            className="btn btn-outline-dark"
+                            className="btn btn-outline-dark fw-bold"
                         >
                             Active
                         </button>
@@ -40,7 +40,7 @@ export default function ButtonBar(props) {
                             type="button"
                             id="completed"
                             onClick={props.filtered}
-                            className="btn btn-outline-dark"
+                            className="btn btn-outline-dark fw-bold"
                         >
                             Completed
                         </button>
@@ -50,7 +50,7 @@ export default function ButtonBar(props) {
                     <button
                         type="button"
                         onClick={props.checked}
-                        className="btn"
+                        className="btn btn-outline-dark fw-bold"
                     >
                         Complete All
                     </button>
@@ -59,7 +59,7 @@ export default function ButtonBar(props) {
                     <button
                         type="button"
                         onClick={props.restored}
-                        className="btn"
+                        className="btn btn-outline-dark fw-bold"
                     >
                         Restore Completed
                     </button>
@@ -68,7 +68,7 @@ export default function ButtonBar(props) {
                     <button
                         type="button"
                         onClick={props.cleared}
-                        className="btn"
+                        className="btn btn-outline-dark fw-bold"
                     >
                         Clear All
                     </button>

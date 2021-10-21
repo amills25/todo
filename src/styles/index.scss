@@ -2,6 +2,25 @@
 
 @import "./bootstrap_variables_overwrite.scss";
 
+body {
+    padding-top: 4.5vh;
+    background-image: url("../img/notepad.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: 83%;
+}
+
+.funThings {
+    font-family: "Architects Daughter", cursive !important;
+    font-size: 25px;
+}
+
+.barShift {
+    padding-top: 10px;
+}
+
 //other non-bootsrap related styles
 
-@import '../../node_modules/bootstrap/scss/bootstrap';
+@import "../../node_modules/bootstrap/scss/bootstrap";

@@ -28,16 +28,19 @@ export default class Input extends Component {
     //View
     render() {
         return (
-            <div className="container">
+            <div className="container barShift">
                 <div className="row">
                     <div className="col">
                         <form onSubmit={this.onCreateSubmit}>
                             <div className="input-group mb-3">
-                                <button type="submit" className="btn">
+                                <button
+                                    type="submit"
+                                    className="btn align-self-end"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
+                                        width="25"
+                                        height="25"
                                         fill="currentColor"
                                         className="bi bi-plus-square"
                                         viewBox="0 0 16 16"
@@ -48,7 +51,7 @@ export default class Input extends Component {
                                 </button>
                                 <input
                                     type="text"
-                                    className="form-control"
+                                    className="form-control bg-transparent text-black border-0 align-self-end funThings"
                                     placeholder="Enter your to do list item here"
                                     aria-label="toDoListItem"
                                     aria-describedby="basic-addon1"

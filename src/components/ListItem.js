@@ -12,7 +12,7 @@ export default function ListItem(props) {
             <div className="row align-items-start">
                 <div className="col">
                     <ul className="list-group">
-                        <li className="list-group-item d-flex justify-content-between align-items-center">
+                        <li className="list-group-item d-flex justify-content-between align-items-center bg-transparent fw-bolder funThings">
                             <button
                                 type="button"
                                 onClick={() =>
@@ -23,8 +23,8 @@ export default function ListItem(props) {
                                 {!props.todo.isChecked ? (
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
+                                        width="25"
+                                        height="25"
                                         fill="currentColor"
                                         className="bi bi-check-circle"
                                         viewBox="0 0 16 16"
@@ -35,8 +35,8 @@ export default function ListItem(props) {
                                 ) : (
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
-                                        width="16"
-                                        height="16"
+                                        width="25"
+                                        height="25"
                                         fill="currentColor"
                                         className="bi bi-check-circle-fill"
                                         viewBox="0 0 16 16"
@@ -59,8 +59,8 @@ export default function ListItem(props) {
                             >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    width="16"
-                                    height="16"
+                                    width="25"
+                                    height="25"
                                     fill="currentColor"
                                     className="bi bi-x-circle"
                                     viewBox="0 0 16 16"
