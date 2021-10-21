@@ -13,11 +13,11 @@ export default class Input extends Component {
     //Controller
     updateInputValue = (event) => {
         //when the user clicks the add button, it will be added to the array
-        //clear the input field
         this.setState({ currentToDo: event.target.value });
     };
     onCreateSubmit = (event) => {
         //gets value from user input and calls parent method
+        //clear the input field
         event.preventDefault();
         if (this.state.currentToDo) {
             this.props.createNewToDo(this.state.currentToDo);

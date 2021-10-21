@@ -9,10 +9,9 @@ class App extends Component {
         super();
         this.state = {
             filterValue: "all",
+            //load localStorage OR an empty array
             toDoArray: JSON.parse(localStorage.getItem("todos")) || [],
         };
-        console.log(localStorage);
-        // localStorage.
     }
 
     //Controller
@@ -37,10 +36,11 @@ class App extends Component {
     };
     toDoListMap = () => {
         let tempList = [];
+        //we can only filter the todos if they haven't been deleted
         tempList = this.state.toDoArray.filter((todo) => {
             if (!todo.wasDeleted) {
                 if (this.state.filterValue === "active") {
-                    //show to dos that are "actve" and "completed"
+                    //only show to dos that are "actve"
                     if (!todo.isChecked) {
                         return todo;
                     }
@@ -50,6 +50,7 @@ class App extends Component {
                         return todo;
                     }
                 } else {
+                    //show "all" to dos
                     return todo;
                 }
             }
@@ -91,7 +92,6 @@ class App extends Component {
     handleClearAll = () => {
         // onClick method
         // emtpy the list
-        // have the button text change to "restore" for a toggle
         let clonedArray = this.state.toDoArray.map((a) => {
             return { ...a, wasDeleted: true };
         });
@@ -123,8 +123,8 @@ class App extends Component {
         localStorage.setItem("todos", JSON.stringify([...clonedArray]));
     };
     filterArray = (e) => {
-        // filter through the array
-        // switch case inside of filter method to show the filterBy ("active", "completed", or "all")
+        //filter through the array
+        //set the filterValue state based on the id of the button that is clicked
         this.setState({ filterValue: e.target.id });
     };
 

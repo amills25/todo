@@ -2,10 +2,6 @@
 import React from "react";
 
 export default function ButtonBar(props) {
-    //Model
-
-    //Controller
-
     //View
     return (
         <div className="container barShift">

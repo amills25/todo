@@ -2,9 +2,6 @@
 import React from "react";
 
 export default function ListItem(props) {
-    //Model
-    // will need to pass in prop methods
-
     //View
     return (
         <div className="container">
