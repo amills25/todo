@@ -10,7 +10,7 @@ export default function ButtonBar(props) {
     return (
         <div className="container">
             <div className="row align-items-start">
-                <div className="col-2">
+                <div className="col-2 text-center">
                     {/* pull the length of the array from the parent */}
                     {props.count} items left
                 </div>
@@ -43,7 +43,7 @@ export default function ButtonBar(props) {
                         </button>
                     </div>
                 </div>
-                <div className="col-2 text-end">
+                <div className="col-2">
                     <button
                         type="button"
                         onClick={props.checked}

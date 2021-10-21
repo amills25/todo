@@ -171,17 +171,8 @@ class App extends Component {
                     />
                 ) : null}
 
-                <div className="row-1 fixed-bottom">
-                    <div className="col text-center">
-                        <img
-                            src="./img/AMBlackXLTrans.jpg"
-                            alt="Andrew Mills Logo"
-                            width="30"
-                            height="24"
-                        />
-                        Developed by Andrew Mills, 2021.
-                    </div>
-                </div>
+                <br></br>
+                <br></br>
             </>
         );
     }
