@@ -131,6 +131,7 @@ class App extends Component {
     //View
     render() {
         let listUsed = this.toDoListMap();
+        let activeUsed = listUsed.filter((a) => a.isChecked !== true);
         let checked = this.handleCompleteAll;
         let cleared = this.handleClearAll;
         let restored = this.handleRestoreAll;
@@ -161,7 +162,7 @@ class App extends Component {
                 {this.state.toDoArray.length > 0 ? (
                     <ButtonBar
                         toDoArray={this.state.toDoArray}
-                        count={listUsed.length}
+                        count={activeUsed.length}
                         checked={checked}
                         cleared={cleared}
                         restored={restored}
